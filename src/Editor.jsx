@@ -179,6 +179,10 @@ export default class Editor extends Component {
                 }
             } catch (err) {
                 this.err = err;
+                if(this.props.onError) {
+                    const error = typeof err === 'object' ? err.message : err;
+                    this.props.onError(error);
+                }
             }
         }
     }
